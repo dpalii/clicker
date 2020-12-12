@@ -11,7 +11,7 @@ export class ClickerComponent implements OnInit {
   public name = '';
   public status = "PRESS THE BUTTON TO START";
   public mode = '5';
-  private isRunning = false;
+  public isRunning = false;
   private isPaused = false;
   private count = 0;
 
@@ -25,7 +25,7 @@ export class ClickerComponent implements OnInit {
   }
 
   handleModeChange(event: string) {
-    this.mode = event;
+    if (!this.isRunning) this.mode = event;
   }
 
   handleClick() {

@@ -10,23 +10,32 @@ export interface Result {
   providedIn: 'root'
 })
 export class LeaderboardService {
-  private results: Result[];
+  constructor() {}
 
-  constructor() {
-    this.results = [];
-  }
+  getResults(mode: string | null): Result[] {
+    let resultJson = localStorage.getItem('results');
+    let results = [];
+    try {
+      if (resultJson) {
+        resultJson = resultJson as string;
+        results = JSON.parse(resultJson);
+      }
+    }
+    catch(e) {
+      console.log(e);
+      results = [];
+    }
 
-  getResults(mode: string) {
-    return this.results
-      .filter(res => res.mode === mode)
-      .sort((a, b) => b.clicks - a.clicks)
-      .map((result, i) => ({...result, id: i}));
+    return results.filter((res: Result) => !mode || res.mode === mode)
+      .sort((a: Result, b: Result) => b.clicks - a.clicks)
+      .map((result: Result, i: number) => ({...result, id: i}));
   }
 
   addResult(result: Result) {
     let found = false;
-
-    this.results = this.results.map(item => {
+    let results = this.getResults(null);
+    
+    results = results.map(item => {
       if (item.name === result.name && item.mode === result.mode) {
         found = true;
         if (item.clicks < result.clicks) {
@@ -37,7 +46,9 @@ export class LeaderboardService {
     });
 
     if (!found) {
-      this.results.push(result);
+      results.push(result);
     }
+
+    localStorage.setItem('results', JSON.stringify(results));
   }
 }

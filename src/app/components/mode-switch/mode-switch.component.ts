@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
 
 @Component({
@@ -7,6 +7,7 @@ import { MatButtonToggleChange } from '@angular/material/button-toggle';
   styleUrls: ['./mode-switch.component.scss']
 })
 export class ModeSwitchComponent implements OnInit {
+  @Input() disabled = false;
   @Output() change = new EventEmitter<string>();
   public mode = '5';
 
