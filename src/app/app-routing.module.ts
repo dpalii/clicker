@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    canActivate: [UserGuard],
+    canActivateChild: [UserGuard],
     component: ContentComponent,
     children: [
       { 
@@ -23,6 +23,10 @@ const routes: Routes = [
       {
         path: 'clicker',
         component: ClickerComponent
+      },
+      {
+        path: '**',
+        redirectTo: 'clicker'
       }
     ]
   }
