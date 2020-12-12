@@ -1,0 +1,9 @@
+<h2 class="heading">HELLO, {{name | uppercase}}</h2>
+<app-mode-switch (change)="handleModeChange($event)"></app-mode-switch>
+<h3 class="heading">{{status}}</h3>
+<section class="button-container">
+    <div (click)="handleClick()" class="button">
+        PRESS!
+    </div>
+</section>
+  

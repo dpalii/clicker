@@ -1,0 +1,12 @@
+<h3 class="heading">GAME MODE: {{mode}} SEC</h3>
+<mat-button-toggle-group (change)="handleModeChange($event)" class="mode-selector">
+    <mat-button-toggle value="5" aria-label="5 seconds">
+        5 SEC
+    </mat-button-toggle>
+    <mat-button-toggle value="10" aria-label="10 seconds">
+        10 SEC
+    </mat-button-toggle>
+    <mat-button-toggle value="15" aria-label="15 seconds">
+        15 SEC
+    </mat-button-toggle>
+</mat-button-toggle-group>

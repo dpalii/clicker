@@ -1,0 +1,10 @@
+<div class="content-wrapper">
+    <nav class="navbar">
+        <a routerLink="/clicker" routerLinkActive="active">Play!</a>
+        <a routerLink="/leaderboard" routerLinkActive="active">Leaderboard</a>
+        <button class="right" (click)="onLogout()">Logout</button>
+    </nav>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="form-wrapper">
+  <div class="name-form">
+    <h3>Welcome!</h3>
+    <mat-form-field class="example-full-width">
+      <mat-label>Your name</mat-label>
+      <input matInput [formControl]="nameControl" placeholder="Ex. Ivan" autocomplete="off" autofocus>
+      <mat-error *ngIf="nameControl.touched && !nameControl.valid">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!nameControl.valid">
+        Submit name
+    </button>
+  </div>
+</div>
